@@ -1,0 +1,83 @@
+= Основные алгоритмы компонента products, сущности autoservice
+:author: Дмитрий Панин
+:email: dimitri-05@mail.ru
+:revnumber: 1.0
+:revdate: 17.08.2025
+
+Документ представляет основные алгоритмы компонента **products**, сущности **autoservice** платформы **почини.онлайн**.
+
+== Создание сущности
+
+Данные для создания сущности:
+
+[plantuml, autoservice-creation-data, svg]
+....
+@startuml
+object AutoserviceCreationData
+AutoserviceCreationData : name = string(length <= 150)
+AutoserviceCreationData : description = string(length <= 1500) | null
+AutoserviceCreationData : itn = string(10 <= length <= 12, pattern = r"^\d{10}(\d{2})?$")
+AutoserviceCreationData : psrn = string(length = 13, pattern = r"^\d{13}$")
+AutoserviceCreationData : city = string(length <= 200)
+AutoserviceCreationData : address = string(length <= 500)
+AutoserviceCreationData : lon = float(-180 < value < 180) | null
+AutoserviceCreationData : lat = float(-90 < value < 90) | null
+@enduml
+....
+
+Алгоритм:
+
+[plantuml, autoservice-creation, svg]
+....
+@startuml
+actor User as "Пользователь\n(браузер или мобильное приложение)"
+participant Client as "client\n(node.js)"
+participant ProductsServer as "products\n(Python)"
+database ProductsDB as "products DB\n(PostgreSQL)"
+
+User --> Client : Запрос на получение страницы выбора GET/products
+Client --> User : Страница выбора с вариантами:\n"Войти, как владелец ТС"\n"Войти, как механик"\n"Войти, как представитель автосервиса"
+User --> Client : Выбор варианта "Войти, как представитель автосервиса" GET/products/autoservices/create
+Client --> User : Форма для создания автосервиса
+User --> Client : Заполнение формы POST/api/v1/autoservices
+Client --> ProductsServer : POST/products/api/v1/autoservices\nДанные из формы\nsession_token в cookies\nВсе headers и cookies, пришедшие от пользователя
+ProductsServer --> ProductsServer : Валидация данных
+ProductsServer --> ProductsServer : Валидация токена
+alt Токен истек, отозван или некорректный
+    ProductsServer --> Client : 401 Unauthorized
+    Client --> User : Редирект на страницу логина\nGET/login?redirect_uri=https://pochini.online/products/autoservices/create
+else Токен корректный
+    ProductsServer --> ProductsDB : Сохранение данных о автосервисе и пользователе автосервиса
+    ProductsDB --> ProductsServer : Подтверждение сохранения
+    ProductsServer --> Client : Данные об автосервисе
+    Client --> User : Данные об автосервисе\nlocation (redirect_uri) https://pochini.online/products/autoservices/lk в headers
+    User --> User : Сохранение данных об автосервисе
+    User --> User : Redirect по location (redirect_uri)
+end
+....
+
+== Отображение карточки автосервиса
+
+[plantuml, autoservice-display, svg]
+....
+@startuml
+actor User as "Пользователь\n(браузер или мобильное приложение)"
+participant Client as "client\n(node.js)"
+participant ProductsServer as "products\n(Python)"
+database ProductsDB as "products DB\n(PostgreSQL)"
+
+User --> Client : Запрос на получение страницы карточки автосервиса GET/products/autoservices/{autoservice_id:uuid}
+Client --> ProductsServer : GET/products/api/v1/autoservices/{autoservice_id:uuid}\nsession_token в cookies\nВсе headers и cookies, пришедшие от пользователя
+ProductsServer --> ProductsServer : Валидация данных
+ProductsServer --> ProductsServer : Валидация токена
+alt Токен истек, отозван или некорректный
+    ProductsServer --> Client : 401 Unauthorized
+    Client --> User : Редирект на страницу логина\nGET/login?redirect_uri=https://pochini.online/products/autoservices/{autoservice_id:uuid}
+else Токен корректный
+    ProductsServer --> ProductsDB : Получение данных об автосервисе по autoservice_id
+    ProductsDB --> ProductsServer : Данные об автосервисе
+    ProductsServer --> Client : Данные об автосервисе
+    Client --> User : Данные об автосервисе
+    Client --> Client : Отображение карточки автосервиса
+end
+....

@@ -1,0 +1,30 @@
+[
+    {
+        "provided_maintenance_category_id": 1,
+        "name": "Техническое обслуживание"
+    },
+    {
+        "provided_maintenance_category_id": 2,
+        "name": "Ремонтные работы"
+    },
+    {
+        "provided_maintenance_category_id": 3,
+        "name": "Диагностика"
+    },
+    {
+        "provided_maintenance_category_id": 4,
+        "name": "Кузовной ремонт"
+    },
+    {
+        "provided_maintenance_category_id": 5,
+        "name": "Уход за кузовом/салоном"
+    },
+    {
+        "provided_maintenance_category_id": 6,
+        "name": "Установка доп. оборудования"
+    },
+    {
+        "provided_maintenance_category_id": 7,
+        "name": "Шиномонтаж"
+    }
+]

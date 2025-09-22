@@ -1,0 +1,212 @@
+[
+    {
+        "provided_maintenance_type_id": 1,
+        "name": "Большое ТО с заменой ГРМ",
+        "provided_maintenance_category_id": 1
+    },
+    {
+        "provided_maintenance_type_id": 2,
+        "name": "Большое ТО без замены ГРМ",
+        "provided_maintenance_category_id": 1
+    },
+    {
+        "provided_maintenance_type_id": 3,
+        "name": "Малое ТО",
+        "provided_maintenance_category_id": 1
+    },
+    {
+        "provided_maintenance_type_id": 4,
+        "name": "Ремонт ДВС",
+        "provided_maintenance_category_id": 2
+    },
+    {
+        "provided_maintenance_type_id": 5,
+        "name": "Ремонт КПП",
+        "provided_maintenance_category_id": 2
+    },
+    {
+        "provided_maintenance_type_id": 6,
+        "name": "Ремонт подвески",
+        "provided_maintenance_category_id": 2
+    },
+    {
+        "provided_maintenance_type_id": 7,
+        "name": "Ремонт тормозной системы",
+        "provided_maintenance_category_id": 2
+    },
+    {
+        "provided_maintenance_type_id": 8,
+        "name": "Ремонт электроники",
+        "provided_maintenance_category_id": 2
+    },
+    {
+        "provided_maintenance_type_id": 9,
+        "name": "Ремонт выхлопной системы(сварочные работы)",
+        "provided_maintenance_category_id": 2
+    },
+    {
+        "provided_maintenance_type_id": 10,
+        "name": "Ремонт системы охлаждения/отопления",
+        "provided_maintenance_category_id": 2
+    },
+    {
+        "provided_maintenance_type_id": 11,
+        "name": "Ремонт кондиционера",
+        "provided_maintenance_category_id": 2
+    },
+    {
+        "provided_maintenance_type_id": 12,
+        "name": "Комплексная компьютерная диагностика",
+        "provided_maintenance_category_id": 3
+    },
+    {
+        "provided_maintenance_type_id": 13,
+        "name": "Компьютерная диагностика ДВС",
+        "provided_maintenance_category_id": 3
+    },
+    {
+        "provided_maintenance_type_id": 14,
+        "name": "Компьютерная диагностика КПП",
+        "provided_maintenance_category_id": 3
+    },
+    {
+        "provided_maintenance_type_id": 15,
+        "name": "Диагностика подвески",
+        "provided_maintenance_category_id": 3
+    },
+    {
+        "provided_maintenance_type_id": 16,
+        "name": "Диагностика тормозной системы",
+        "provided_maintenance_category_id": 3
+    },
+    {
+        "provided_maintenance_type_id": 17,
+        "name": "Диагностика электрики",
+        "provided_maintenance_category_id": 3
+    },
+    {
+        "provided_maintenance_type_id": 18,
+        "name": "Диагностика систем охлаждения/отопления",
+        "provided_maintenance_category_id": 3
+    },
+    {
+        "provided_maintenance_type_id": 19,
+        "name": "Диагностика кондиционера",
+        "provided_maintenance_category_id": 3
+    },
+    {
+        "provided_maintenance_type_id": 20,
+        "name": "Замена элементов кузова",
+        "provided_maintenance_category_id": 4
+    },
+    {
+        "provided_maintenance_type_id": 21,
+        "name": "Покраска элементов кузова",
+        "provided_maintenance_category_id": 4
+    },
+    {
+        "provided_maintenance_type_id": 22,
+        "name": "Полировка кузова",
+        "provided_maintenance_category_id": 4
+    },
+    {
+        "provided_maintenance_type_id": 23,
+        "name": "Ремонт после ДТП",
+        "provided_maintenance_category_id": 4
+    },
+    {
+        "provided_maintenance_type_id": 24,
+        "name": "Антикоррозионная обработка кузова",
+        "provided_maintenance_category_id": 4
+    },
+    {
+        "provided_maintenance_type_id": 25,
+        "name": "Тонировка",
+        "provided_maintenance_category_id": 4
+    },
+    {
+        "provided_maintenance_type_id": 26,
+        "name": "Аэрография",
+        "provided_maintenance_category_id": 4
+    },
+    {
+        "provided_maintenance_type_id": 27,
+        "name": "Мойка",
+        "provided_maintenance_category_id": 5
+    },
+    {
+        "provided_maintenance_type_id": 28,
+        "name": "Химчистка",
+        "provided_maintenance_category_id": 5
+    },
+    {
+        "provided_maintenance_type_id": 29,
+        "name": "Установка чехлов/оплеток",
+        "provided_maintenance_category_id": 5
+    },
+    {
+        "provided_maintenance_type_id": 30,
+        "name": "Установка парктроников/камер",
+        "provided_maintenance_category_id": 6
+    },
+    {
+        "provided_maintenance_type_id": 31,
+        "name": "Установка фаркопов/багажных систем",
+        "provided_maintenance_category_id": 6
+    },
+    {
+        "provided_maintenance_type_id": 32,
+        "name": "Установка шумоизоляции/аудиосистем",
+        "provided_maintenance_category_id": 6
+    },
+    {
+        "provided_maintenance_type_id": 33,
+        "name": "Установка сигнализации",
+        "provided_maintenance_category_id": 6
+    },
+    {
+        "provided_maintenance_type_id": 34,
+        "name": "Иное",
+        "provided_maintenance_category_id": 6
+    },
+    {
+        "provided_maintenance_type_id": 35,
+        "name": "Ремонт шин R≥19",
+        "provided_maintenance_category_id": 7
+    },
+    {
+        "provided_maintenance_type_id": 36,
+        "name": "Ремонт шин R≤18",
+        "provided_maintenance_category_id": 7
+    },
+    {
+        "provided_maintenance_type_id": 37,
+        "name": "Ремонт дисков R≥19",
+        "provided_maintenance_category_id": 7
+    },
+    {
+        "provided_maintenance_type_id": 38,
+        "name": "Ремонт дисков R≤18",
+        "provided_maintenance_category_id": 7
+    },
+    {
+        "provided_maintenance_type_id": 39,
+        "name": "Сезонная смена шин R≥19",
+        "provided_maintenance_category_id": 7
+    },
+    {
+        "provided_maintenance_type_id": 40,
+        "name": "Сезонная смена шин R≤18",
+        "provided_maintenance_category_id": 7
+    },
+    {
+        "provided_maintenance_type_id": 41,
+        "name": "Регулировка сход развала R≥19",
+        "provided_maintenance_category_id": 7
+    },
+    {
+        "provided_maintenance_type_id": 42,
+        "name": "Регулировка сход развала R≤18",
+        "provided_maintenance_category_id": 7
+    }
+]

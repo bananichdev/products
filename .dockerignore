@@ -1,0 +1,7 @@
+*
+!products
+!migrations
+!CHANGELOG.md
+!README.md
+!pyproject.toml
+!uv.lock

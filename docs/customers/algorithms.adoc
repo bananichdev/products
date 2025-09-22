@@ -1,0 +1,52 @@
+= Основные алгоритмы компонента products, сущности customer
+:author: Дмитрий Панин
+:email: dimitri-05@mail.ru
+:revnumber: 1.0
+:revdate: 17.08.2025
+
+Документ представляет основные алгоритмы компонента **products**, сущности **customer** платформы **почини.онлайн**.
+
+== Создание сущности
+
+Данные для создания сущности:
+
+[plantuml, customer-creation-data, svg]
+....
+@startuml
+object CustomerCreationData
+CustomerCreationData : name = string(length <= 150)
+CustomerCreationData : city = string(length <= 200) | null
+@enduml
+....
+
+Алгоритм:
+
+[plantuml, customer-creation, svg]
+....
+@startuml
+actor User as "Пользователь\n(браузер или мобильное приложение)"
+participant Client as "client\n(node.js)"
+participant ProductsServer as "products\n(Python)"
+database ProductsDB as "products DB\n(PostgreSQL)"
+
+User --> Client : Запрос на получение страницы выбора GET/products
+Client --> User : Страница выбора с вариантами:\n"Войти, как владелец ТС"\n"Войти, как механик"\n"Войти, как представитель автосервиса"
+User --> Client : Выбор варианта "Войти, как владелец ТС" GET/products/customers/create
+Client --> User : Форма для создания владельца ТС
+User --> Client : Заполнение формы POST/api/v1/customers
+Client --> ProductsServer : POST/products/api/v1/customers\nДанные из формы\nsession_token в cookies\nВсе headers и cookies, пришедшие от пользователя
+ProductsServer --> ProductsServer : Валидация данных
+ProductsServer --> ProductsServer : Валидация токена
+alt Токен истек, отозван или некорректный
+    ProductsServer --> Client : 401 Unauthorized
+    Client --> User : Редирект на страницу логина\nGET/login?redirect_uri=https://pochini.online/products/customers/create
+else Токен корректный
+    ProductsServer --> ProductsDB : Сохранение данных о клиенте
+    ProductsDB --> ProductsServer : Подтверждение сохранения
+    ProductsServer --> Client : Данные о клиенте
+    Client --> User : Данные о клиенте\nlocation (redirect_uri) https://pochini.online/products/customers/lk в headers
+    User --> User : Сохранение данных о клиенте
+    User --> User : Redirect по location (redirect_uri)
+end
+....
+

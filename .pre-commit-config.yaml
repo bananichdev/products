@@ -1,0 +1,51 @@
+repos:
+  - repo: local
+    hooks:
+      - id: ruff
+        name: Ruff
+        entry: uv run ruff
+        args: [check, --fix, .]
+        language: system
+        types: [python]
+        pass_filenames: false
+        require_serial: true
+
+      - id: ruff-format
+        name: Ruff Format
+        entry: uv run ruff format
+        args: [.]
+        language: system
+        types: [python]
+        pass_filenames: false
+
+  - repo: local
+    hooks:
+      - id: mypy
+        name: Mypy
+        entry: uv run mypy
+        args: [.]
+        language: system
+        types: [python]
+        pass_filenames: false
+        require_serial: true
+
+  - repo: local
+    hooks:
+      - id: commitizen
+        name: Commitizen
+        entry: uv run cz
+        args: [check, --commit-msg-file]
+        language: system
+        stages: [commit-msg]
+        require_serial: true
+
+  - repo: local
+    hooks:
+      - id: pytest
+        name: Pytest
+        entry: uv run pytest
+        args: [.]
+        language: system
+        types: [python]
+        pass_filenames: false
+        always_run: true
